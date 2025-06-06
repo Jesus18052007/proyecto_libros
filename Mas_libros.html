@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="Mas_libros.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mas libros</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1>La biblioteca de los sueños</h1>
+    </header>
+    <nav>
+        <ul class="nav">
+            <a href="index.html"><li>Inicio</li></a>
+            <a href="Libros.html"><li>Todos los libros</li></a>
+            <a href="Categorias.html"><li>Categorias</li></a>
+            <a href="Mas_libros.html"><li>Solicitar libro</li></a>
+        </ul>
+    </nav>
+    
+
+
+    <form onsubmit="agregarContacto(event)" class="solicitar">
+        <label for="Nombre_del_libro">Nombre del libro:</label>
+        <input type="text" id="Titulo_del_libro" name="Titulo_del_libro" placeholder="Ingrese el nombre del libro">
+        
+        <label for="Genero">Género:</label>
+        <select id="Genero" name="Genero">
+        <option value="">Seleccione un género</option>
+        <option value="ficcion">Ficción</option>
+        <option value="no-ficcion">No ficción</option>
+        <option value="romance">Romance</option>
+        <option value="ciencia-ficcion">Ciencia ficción</option>
+        <option value="fantasia">Fantasía</option>
+        <option value="terror">Terror</option>
+        <option value="otro">Otro</option>
+        </select>
+        
+        <label for="Autor">Autor:</label>
+        <input type="text" id="Autor" name="Autor" placeholder="Ingrese el nombre del autor">
+
+        <label for="Autor">¿Quien lo solicita?:</label>
+        <input type="text" id="Nombre_del_solicitante" name="Nombre_del_solicitante" placeholder="Nombre del solicitante">
+        
+        <button type="submit">Enviar</button>
+        </form>
+
+        <footer>
+            <ul class="footer">
+                2025 La biblioteca de los sueños
+            </ul>
+        </footer>
+
+
+        <script>
+        // Función para agregar un contacto
+        function agregarContacto(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            fetch('metodosugerencias.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                if (data.includes("exitosamente")) {
+                    location.reload();
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+        </script>
+
+
+</body>
+</html>

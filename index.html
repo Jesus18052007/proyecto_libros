@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INDEX</title>
+     <style>
+        /* Estilos básicos para el modal personalizado */
+        .modal-overlay {
+            display: none; /* Oculto por defecto */
+            position: fixed; /* Fijo en la pantalla */
+            z-index: 1000; /* Por encima de otros elementos */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Habilitar scroll si el contenido es muy grande */
+            background-color: rgba(0,0,0,0.6); /* Fondo semi-transparente */
+            justify-content: center; /* Centrar contenido horizontalmente */
+            align-items: center; /* Centrar contenido verticalmente */
+        }
+
+        .modal-content-custom {
+            background-color: #fefefe;
+            margin: auto; /* Centrar el modal */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Ancho del modal */
+            max-width: 400px; /* Ancho máximo */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            color: #333; /* Color de texto para el modal */
+            position: relative; /* Para posicionar el botón de cerrar */
+        }
+
+        .modal-close-button {
+            color: #aaa;
+            float: right; /* Alinear a la derecha */
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+
+        .modal-close-button:hover,
+        .modal-close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-body-custom a {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            background-color: #007bff; /* Color azul para botones */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-body-custom a:hover {
+            background-color: #0056b3;
+        }
+
+        .modal-body-custom .btn-danger-custom {
+            background-color: #dc3545; /* Color rojo para cerrar sesión */
+        }
+
+        .modal-body-custom .btn-danger-custom:hover {
+            background-color: #c82333;
+        }
+
+        
+
+        
+        
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>La biblioteca de los sueños</h1>
+    </header>
+    <nav>
+        <ul class="nav">
+            <a href="index.html"><li>Inicio</li></a>
+            <a href="Libros.html"><li>Todos los libros</li></a>
+            <a href="Categorias.html"><li>Categorias</li></a>
+            <a href="Mas_libros.html"><li>Solicitar libro</li></a>
+
+        </ul>
+    </nav>
+
+
+    <section class="section">
+<h2>La biblioteca de los sueños</h2>
+<label>"La lectura es un pasaporte a nuevos mundos y experiencias"</label>
+    </section>
+
+
+    <br>
+    <br>
+
+    <div style="text-align: center;">
+        <label style="font-size: 30px;">Nuestras sugerencias para ti</label>
+    <section>
+        <ul class="img">
+            <li><img src="imagenes/El principito.png"></li>
+            <li><img src="imagenes/Memento.jpg"></li>
+            <li><img src="imagenes/No me pudes lastimar.jpg"></li>
+            <li><vide src="libros.mp4" controls></video></li>
+            
+        </ul>
+    </section>
+</div>
+
+
+    <footer>
+        <ul class="footer">
+            2025 La biblioteca de los sueños
+        </ul>
+    </footer>
+
+    <div id="datosModalCustom" class="modal-overlay">
+        <div class="modal-content-custom">
+            <span class="modal-close-button">&times;</span>
+            <h2>Opciones de Usuario</h2>
+            <p>¿Qué deseas hacer?</p>
+            <div class="modal-body-custom">
+                <a href="Modificaciones.html">Modificar mis datos</a>
+                <a href="Logout.php" class="btn-danger-custom">Cerrar Sesión</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lógica JavaScript para mostrar/ocultar el modal personalizado
+        const datosButton = document.getElementById('datosButton');
+        const datosModal = document.getElementById('datosModalCustom');
+        const closeButton = document.querySelector('.modal-close-button');
+
+        // Cuando el usuario hace clic en el botón "Datos", abre el modal
+        datosButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Evita que el enlace salte a la parte superior de la página
+            datosModal.style.display = 'flex'; // Cambia a 'flex' para centrar con justify/align-items
+        });
+
+        // Cuando el usuario hace clic en el botón de cerrar (x), cierra el modal
+        closeButton.addEventListener('click', function() {
+            datosModal.style.display = 'none';
+        });
+
+        // Cuando el usuario hace clic fuera del contenido del modal, cierra el modal
+        window.addEventListener('click', function(event) {
+            if (event.target == datosModal) {
+                datosModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
